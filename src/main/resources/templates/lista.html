@@ -22,6 +22,7 @@
                                 <th>Artista</th>
                                 <th>Genere</th>
                                 <th>Anno</th>
+                                <th>Azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,9 +31,14 @@
                                 <td th:text="${canzone.artista}"></td>
                                 <td th:text="${canzone.genere}"></td>
                                 <td th:text="${canzone.anno}"></td>
+                                <td>
+                                    <a th:href="@{'/canzoni/modifica/' + ${canzone.id}}" class="btn btn-sm btn-warning">Modifica</a>
+                                    <a th:href="@{'/canzoni/elimina/' + ${canzone.id}}" class="btn btn-sm btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questa canzone?');">Elimina</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                    
                 </div>
                 <div class="row">
                     <div class="col-11"></div>

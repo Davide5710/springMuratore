@@ -36,12 +36,18 @@ public class CanzoneController {
     public String modificaCanzone(@PathVariable Long id, Model model) {
         Canzone canzone = canzoneRepository.findById(id).orElseThrow();
         model.addAttribute("canzone", canzone);
-        return "canzoni/form";
+        return "form";
     }
 
     @PostMapping("/aggiorna")
     public String aggiornaCanzone(@ModelAttribute Canzone canzone) {
         canzoneRepository.save(canzone);
         return "redirect:/canzoni";
+    }
+
+    @GetMapping("/elimina/{id}")
+    public String eliminaCanzone(@PathVariable Long id) {
+        canzoneRepository.deleteById(id);
+    return "redirect:/canzoni";
     }
 }
